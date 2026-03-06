@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import SectionTitle from "../components/UI/SectionTitle";
 import { skillGroups } from "../data/skills";
 import { useI18n } from "../i18n/I18nProvider";
@@ -35,11 +36,12 @@ function SkillSlot({ name, rarity = "common" }: SlotProps) {
 function InventorySection({
   title,
   items,
+  slotsLabel,
 }: {
   title: string;
   items: string[];
+  slotsLabel: string;
 }) {
-  // “raridade” simples só pra dar variedade visual
   const getRarity = (i: number): SlotProps["rarity"] => {
     if (i % 11 === 0) return "epic";
     if (i % 5 === 0) return "rare";
@@ -53,7 +55,7 @@ function InventorySection({
           <span className={styles.invLed} aria-hidden="true" />
           {title}
         </div>
-        <div className={styles.invPanelCount}>{items.length} slots</div>
+        <div className={styles.invPanelCount}>{slotsLabel}</div>
       </div>
 
       <div className={styles.invGrid} role="list">
@@ -68,33 +70,42 @@ function InventorySection({
 }
 
 export default function Skills() {
-  const { t } = useI18n();
+  const { lang, t, ta } = useI18n();
 
-  const tech = skillGroups.find((g) => g.id === "tech");
-  const tools = skillGroups.find((g) => g.id === "tools");
-  const soft = skillGroups.find((g) => g.id === "soft");
+  const groups = useMemo(
+    () =>
+      skillGroups.map((group) => ({
+        ...group,
+        items: ta(`skills.items.${group.id}`),
+      })),
+    [lang, ta]
+  );
+
+  const tech = groups.find((g) => g.id === "tech");
+  const tools = groups.find((g) => g.id === "tools");
+  const soft = groups.find((g) => g.id === "soft");
 
   return (
     <div className="page">
-      <SectionTitle
-        title={t("home.skillsTitle")}
-        subtitle={t("home.skillsSubtitle")}
-      />
+      <SectionTitle title={t("home.skillsTitle")} subtitle={t("home.skillsSubtitle")} />
 
       <div className={styles.invShell}>
         <InventorySection
-          title={t("home.skillsTitle")}
+          title={t("skills.groups.tech")}
           items={tech?.items ?? []}
+          slotsLabel={t("skills.slots", { count: tech?.items.length ?? 0 })}
         />
 
         <InventorySection
           title={t("skills.groups.tools")}
           items={tools?.items ?? []}
+          slotsLabel={t("skills.slots", { count: tools?.items.length ?? 0 })}
         />
 
         <InventorySection
           title={t("skills.groups.soft")}
           items={soft?.items ?? []}
+          slotsLabel={t("skills.slots", { count: soft?.items.length ?? 0 })}
         />
       </div>
     </div>

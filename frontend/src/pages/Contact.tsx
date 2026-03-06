@@ -68,9 +68,9 @@ export default function Contact() {
           <div className={styles.panelTop}>
             <div className={styles.panelTitle}>
               <span className={styles.panelLed} aria-hidden="true" />
-              COMMUNICATION CHANNELS
+              {t("contact.channelsTitle")}
             </div>
-            <div className={styles.panelMeta}>3 links</div>
+            <div className={styles.panelMeta}>{t("contact.channelsCount", { count: 3 })}</div>
           </div>
 
           <div className={styles.panelBody}>
@@ -88,7 +88,7 @@ export default function Contact() {
 
                 <div className={styles.channelValue}>
                   {copied === "email"
-                    ? "COPIED ✓"
+                    ? t("contact.copied")
                     : profile.links.email}
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function Contact() {
 
                 <div className={styles.channelValue}>
                   {copied === "linkedin"
-                    ? "COPIED ✓"
+                    ? t("contact.copied")
                     : profile.links.linkedin}
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function Contact() {
 
                 <div className={styles.channelValue}>
                   {copied === "github"
-                    ? "COPIED ✓"
+                    ? t("contact.copied")
                     : profile.links.github}
                 </div>
               </div>
@@ -141,10 +141,10 @@ export default function Contact() {
           <div className={styles.panelTop}>
             <div className={styles.panelTitle}>
               <span className={styles.panelLed} />
-              SEND TRANSMISSION
+              {t("contact.transmissionTitle")}
             </div>
 
-            <div className={styles.panelMeta}>secure line</div>
+            <div className={styles.panelMeta}>{t("contact.secureLine")}</div>
           </div>
 
           <div className={styles.panelBody}>

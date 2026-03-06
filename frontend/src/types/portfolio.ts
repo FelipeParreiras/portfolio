@@ -24,6 +24,7 @@ export type Project = {
   description: string;
   stack: string[];
   links: ExternalLinks;
+  image?: string;
 };
 
 export type ExperienceItem = {

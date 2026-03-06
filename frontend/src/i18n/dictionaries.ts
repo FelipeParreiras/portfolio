@@ -12,10 +12,11 @@ export const dictionaries = {
       langToggle: "PT/EN",
     },
     profile: {
-      role: "Engenheiro de Software",
+      role: "Desenvolvedor de Software Full Stack",
       location: "Minas Gerais, Brasil",
-      headline: "Desenvolvo aplicações web e APIs com foco em performance, organização e entrega.",
-      aboutTitle: "Sobre Mim",
+      headline:
+        "Desenvolvedor focado em criar interfaces modernas, experiências interativas e soluções full stack com identidade própria.",
+      aboutTitle: "Sobre mim",
       aboutSubtitle: "Breve apresentação",
       whoTitle: "Quem Sou Eu",
       doTitle: "O que eu faço",
@@ -28,6 +29,55 @@ export const dictionaries = {
         "Atuo no desenvolvimento de APIs, microsserviços, automações e interfaces web, utilizando Java, Python, React e bancos de dados SQL, sempre com foco em qualidade de código, boas práticas e manutenibilidade.",
         "Tenho perfil colaborativo, facilidade para aprender novas tecnologias e foco na resolução de problemas reais. Busco oportunidades como Desenvolvedor Back-end, Front-end ou Full Stack, em ambientes que valorizem crescimento técnico, arquitetura bem definida e evolução contínua.",
       ],
+      aboutTerminal: {
+        title: "C:\\Users\\visitor",
+        hint: "Clique/Enter para pular",
+        lines: [
+          "Sou desenvolvedor full stack com foco em construir soluções reais e úteis.",
+          "Tenho experiência com Java, Spring Boot, React, TypeScript, Python e SQL.",
+          "Gosto de unir boa arquitetura, automação e identidade visual forte nos projetos.",
+          "Atualmente venho evoluindo meu portfólio com uma temática inspirada em Matrix e gamificação.",
+        ],
+      },
+    },
+    hero: {
+      eyebrow: "PROFILE // ONLINE",
+      description:
+        "Desenvolvedor focado em criar interfaces modernas, experiências interativas e soluções full stack com identidade própria.",
+      scanner: "ESCANEANDO PERFIL...",
+      ctaProjects: "Ver projetos",
+      ctaContact: "Contato",
+      stats: ["React", "Java", "Spring Boot", "AWS"],
+      cards: {
+        focus: {
+          title: "Foco",
+          text: "Criação de sistemas funcionais, visuais fortes e experiências interativas.",
+        },
+        stack: {
+          title: "Stack",
+          text: "Java, Spring Boot, React, TypeScript, Python, SQL e integrações.",
+        },
+        goal: {
+          title: "Objetivo",
+          text: "Construir produtos memoráveis com identidade visual e boa arquitetura.",
+        },
+      },
+    },
+    intro: {
+      ariaLabel: "Intro do portfólio",
+      scanTitle: "escaneando profissional",
+      scanBarAriaLabel: "barra de escaneamento",
+      skipHint: "clique ou pressione ENTER para pular",
+      scanDone: "escaneamento concluído!",
+      startingAnalysis: "iniciando análise...",
+      loading: "carregando...",
+      prompt: {
+        found: "Profissional Raro encontrado:",
+        name: "Nome: {name}",
+        type: "Tipo: {role}",
+        level: "Nível: Júnior",
+        rarity: "Raridade: Profissional único!",
+      },
     },
     home: {
       actionsProjects: "Ver Projetos",
@@ -63,6 +113,79 @@ export const dictionaries = {
       mailSubject: "Contato via Portfólio",
       mailNoName: "(sem nome)",
     },
+    experience: {
+      empty: "Sem experiências cadastradas.",
+      selectTitle: "Selecionar experiência",
+      selectHint: "Use as setas, scroll ou clique nos cards laterais",
+      carouselAriaLabel: "Carrossel de experiências",
+      previous: "Anterior",
+      next: "Próximo",
+      selected: "Selecionado",
+      noAdditionalDetails: "Sem detalhes adicionais.",
+      items: {
+        datte: {
+          role: "Desenvolvedor de Software Júnior",
+          period: "Fev 2026 — Atual",
+          badge: "Full Stack",
+          bullets: [
+            "Desenvolvimento e manutenção de aplicações web em PHP utilizando CodeIgniter e Laravel.",
+            "Implementação de novas funcionalidades e melhorias de performance nas aplicações.",
+            "Manipulação e otimização de bancos de dados SQL.",
+            "Atuação em equipe multidisciplinar no planejamento, desenvolvimento e entrega de demandas.",
+            "Análise técnica e resolução de problemas em sistemas existentes.",
+          ],
+        },
+        confianza: {
+          role: "Desenvolvedor Full Stack Júnior",
+          period: "Jul 2025 — Jan 2026",
+          badge: "Back-end / Automação",
+          bullets: [
+            "Desenvolvimento de aplicações full stack (front-end e back-end).",
+            "Criação de bots e automações utilizando Python.",
+            "Desenvolvimento de APIs e microsserviços com Java e Spring.",
+            "Manipulação e modelagem de bancos de dados SQL.",
+            "Desenvolvimento de interfaces em React.",
+            "Análise e manipulação de dados com Excel.",
+            "Suporte à infraestrutura interna da empresa.",
+          ],
+        },
+        axis: {
+          role: "Estagiário de Desenvolvimento",
+          period: "Jul 2022 — Dez 2022",
+          badge: "Estágio",
+          bullets: [
+            "Desenvolvimento de funcionalidades para sistema interno da empresa.",
+            "Atuação no desenvolvimento front-end e back-end.",
+            "Implementação de funcionalidades em .NET e React.",
+            "Execução de testes e validação de funcionalidades.",
+            "Versionamento de código utilizando Git.",
+            "Participação em metodologias ágeis (Scrum).",
+          ],
+        },
+      },
+    },
+    education: {
+      terminalTitle: "SYSTEM_LOG::EDUCATION_HISTORY",
+      items: {
+        puc: {
+          course: "Engenharia de Software",
+          period: "2024 — em andamento",
+          details: [
+            "Formação focada em engenharia de software, arquitetura de sistemas e desenvolvimento.",
+            "Estudo de estruturas de dados, bancos de dados, redes e arquitetura de software.",
+            "Desenvolvimento de projetos acadêmicos utilizando Java, Spring Boot e React.",
+          ],
+        },
+        cotemig: {
+          course: "Formação Técnica em Tecnologia da Informação",
+          period: "Concluído",
+          details: [
+            "Formação técnica com foco em programação, lógica e desenvolvimento web.",
+            "Base sólida em desenvolvimento de software e fundamentos de tecnologia.",
+          ],
+        },
+      },
+    },
     projects: {
       details: "Detalhes",
       back: "Voltar",
@@ -73,7 +196,51 @@ export const dictionaries = {
       viewOnGithub: "Ver no GitHub",
       github: "GitHub",
       live: "Live",
+      noPreview: "SEM PRÉVIA",
+      fileLabel: "ARQUIVO #{number}",
+      openRepository: "ABRIR REPOSITÓRIO",
+      openDemo: "ABRIR DEMO",
       items: {
+        "troca-puc": {
+          name: "Troca PUC",
+          description:
+            "Plataforma desenvolvida para facilitar trocas de materiais e itens entre estudantes da PUC Minas.",
+          highlights: [
+            "Fluxo voltado para a comunidade acadêmica da PUC Minas.",
+            "Estrutura pensada para listar, visualizar e trocar itens entre estudantes.",
+            "Base full stack com foco em usabilidade e organização dos anúncios.",
+          ],
+        },
+        "painel-evc": {
+          name: "Painel EVC",
+          description:
+            "Sistema completo de gestão de vistorias para taxistas com agendamentos, ordens de serviço, controle administrativo e relatórios.",
+          highlights: [
+            "Gestão de agendamentos, ordens de serviço e fluxo operacional.",
+            "Perfis administrativos com visão de horários, funcionários e histórico.",
+            "Estrutura pensada para relatórios e acompanhamento gerencial.",
+          ],
+        },
+        "batalha-digimon": {
+          name: "Batalha Digimon",
+          description:
+            "Projeto de automação e análise de dados envolvendo scraping e processamento de informações do jogo Digimon.",
+          highlights: [
+            "Automação de coleta de dados com Python e Selenium.",
+            "Processamento e organização das informações em banco de dados.",
+            "Aplicação prática de scraping e análise para transformar dados em insights.",
+          ],
+        },
+        "plataforma-chamados": {
+          name: "Plataforma de Chamados",
+          description:
+            "Sistema de gerenciamento de chamados utilizando arquitetura de microsserviços e integração com AWS.",
+          highlights: [
+            "Arquitetura baseada em microsserviços para separar responsabilidades.",
+            "Integração com serviços AWS para escalabilidade e suporte à operação.",
+            "Foco em organização do fluxo de atendimento e rastreabilidade dos chamados.",
+          ],
+        },
         frifasfood: {
           name: "FrifasFood",
           description: "Sistema full-stack para pedidos e gestão de produtos.",
@@ -82,10 +249,16 @@ export const dictionaries = {
       },
     },
     skills: {
+      slots: "{count} slots",
       groups: {
         tech: "Habilidades Técnicas",
         tools: "Frameworks / Ferramentas",
         soft: "Habilidades Interpessoais",
+      },
+      items: {
+        tech: ["Java", "Spring Boot", "Python", "React", "TypeScript", "Angular", "SQL", "Node.js", "REST APIs"],
+        tools: ["Git", "Docker", "AWS", "Azure", "CI/CD", "Linux", "Postman"],
+        soft: ["Comunicação", "Trabalho em equipe", "Resolução de problemas", "Proatividade", "Organização", "Aprendizado contínuo"],
       },
     },
     errors: {
@@ -101,6 +274,11 @@ export const dictionaries = {
         linkedin: "LinkedIn",
         github: "GitHub",
       },
+      channelsTitle: "CANAIS DE COMUNICAÇÃO",
+      channelsCount: "{count} links",
+      copied: "COPIADO ✓",
+      transmissionTitle: "ENVIAR TRANSMISSÃO",
+      secureLine: "linha segura",
       sendMessage: "Envie uma mensagem",
       yourName: "Seu Nome",
       yourEmail: "Seu Email",
@@ -132,10 +310,11 @@ export const dictionaries = {
       langToggle: "PT/EN",
     },
     profile: {
-      role: "Software Engineer",
+      role: "Full Stack Software Developer",
       location: "Minas Gerais, Brazil",
-      headline: "I build web applications and APIs with a focus on performance, organization, and delivery.",
-      aboutTitle: "About",
+      headline:
+        "Developer focused on building modern interfaces, interactive experiences, and full stack solutions with a strong identity.",
+      aboutTitle: "About me",
       aboutSubtitle: "Short overview",
       whoTitle: "Who I Am",
       doTitle: "What I Do",
@@ -148,6 +327,55 @@ export const dictionaries = {
         "I work on APIs, microservices, automation, and web interfaces using Java, Python, React, and SQL databases, focusing on code quality, best practices, and maintainability.",
         "I am collaborative, quick to learn new technologies, and focused on solving real problems. I am looking for opportunities as a Back-end, Front-end, or Full Stack Developer in environments that value solid architecture and continuous improvement.",
       ],
+      aboutTerminal: {
+        title: "C:\\Users\\visitor",
+        hint: "Click/Enter to skip",
+        lines: [
+          "I am a full stack developer focused on building real and useful solutions.",
+          "I have experience with Java, Spring Boot, React, TypeScript, Python, and SQL.",
+          "I enjoy combining solid architecture, automation, and strong visual identity in my projects.",
+          "I am currently evolving my portfolio with a Matrix-inspired theme and gamification.",
+        ],
+      },
+    },
+    hero: {
+      eyebrow: "PROFILE // ONLINE",
+      description:
+        "Developer focused on building modern interfaces, interactive experiences, and full stack solutions with a strong identity.",
+      scanner: "SCANNING PROFILE...",
+      ctaProjects: "View projects",
+      ctaContact: "Contact",
+      stats: ["React", "Java", "Spring Boot", "AWS"],
+      cards: {
+        focus: {
+          title: "Focus",
+          text: "Building functional systems, striking visuals, and interactive experiences.",
+        },
+        stack: {
+          title: "Stack",
+          text: "Java, Spring Boot, React, TypeScript, Python, SQL, and integrations.",
+        },
+        goal: {
+          title: "Goal",
+          text: "Build memorable products with visual identity and strong architecture.",
+        },
+      },
+    },
+    intro: {
+      ariaLabel: "Portfolio intro",
+      scanTitle: "scanning professional",
+      scanBarAriaLabel: "scan progress bar",
+      skipHint: "click or press ENTER to skip",
+      scanDone: "scan completed!",
+      startingAnalysis: "starting analysis...",
+      loading: "loading...",
+      prompt: {
+        found: "Rare Professional found:",
+        name: "Name: {name}",
+        type: "Type: {role}",
+        level: "Level: Junior",
+        rarity: "Rarity: Unique professional!",
+      },
     },
     home: {
       actionsProjects: "View Projects",
@@ -183,6 +411,79 @@ export const dictionaries = {
       mailSubject: "Contact via Portfolio",
       mailNoName: "(no name)",
     },
+    experience: {
+      empty: "No experiences registered.",
+      selectTitle: "Select experience",
+      selectHint: "Use the arrows, scroll, or click the side cards",
+      carouselAriaLabel: "Experience carousel",
+      previous: "Previous",
+      next: "Next",
+      selected: "Selected",
+      noAdditionalDetails: "No additional details.",
+      items: {
+        datte: {
+          role: "Junior Software Developer",
+          period: "Feb 2026 — Present",
+          badge: "Full Stack",
+          bullets: [
+            "Developed and maintained web applications in PHP using CodeIgniter and Laravel.",
+            "Implemented new features and performance improvements across applications.",
+            "Handled and optimized SQL databases.",
+            "Worked with a multidisciplinary team in planning, development, and delivery.",
+            "Performed technical analysis and solved issues in existing systems.",
+          ],
+        },
+        confianza: {
+          role: "Junior Full Stack Developer",
+          period: "Jul 2025 — Jan 2026",
+          badge: "Backend / Automation",
+          bullets: [
+            "Built full stack applications across front-end and back-end layers.",
+            "Created bots and automation workflows using Python.",
+            "Developed APIs and microservices with Java and Spring.",
+            "Modeled and managed SQL databases.",
+            "Built interfaces with React.",
+            "Worked with Excel for data analysis and manipulation.",
+            "Supported the company’s internal infrastructure.",
+          ],
+        },
+        axis: {
+          role: "Software Development Intern",
+          period: "Jul 2022 — Dec 2022",
+          badge: "Internship",
+          bullets: [
+            "Developed features for the company’s internal system.",
+            "Worked on both front-end and back-end development.",
+            "Implemented features in .NET and React.",
+            "Executed tests and validated functionalities.",
+            "Managed code versioning with Git.",
+            "Participated in agile methodologies such as Scrum.",
+          ],
+        },
+      },
+    },
+    education: {
+      terminalTitle: "SYSTEM_LOG::EDUCATION_HISTORY",
+      items: {
+        puc: {
+          course: "Software Engineering",
+          period: "2024 — ongoing",
+          details: [
+            "Academic program focused on software engineering, system architecture, and development.",
+            "Study of data structures, databases, networks, and software architecture.",
+            "Development of academic projects using Java, Spring Boot, and React.",
+          ],
+        },
+        cotemig: {
+          course: "Technical Degree in Information Technology",
+          period: "Completed",
+          details: [
+            "Technical education focused on programming, logic, and web development.",
+            "Solid foundation in software development and technology fundamentals.",
+          ],
+        },
+      },
+    },
     projects: {
       details: "Details",
       back: "Back",
@@ -193,7 +494,51 @@ export const dictionaries = {
       viewOnGithub: "View on GitHub",
       github: "GitHub",
       live: "Live",
+      noPreview: "NO PREVIEW",
+      fileLabel: "FILE #{number}",
+      openRepository: "OPEN REPOSITORY",
+      openDemo: "OPEN DEMO",
       items: {
+        "troca-puc": {
+          name: "Troca PUC",
+          description:
+            "Platform built to make it easier for PUC Minas students to exchange materials and items.",
+          highlights: [
+            "Workflow designed for the PUC Minas academic community.",
+            "Structure built to list, browse, and exchange items among students.",
+            "Full stack foundation focused on usability and ad organization.",
+          ],
+        },
+        "painel-evc": {
+          name: "EVC Dashboard",
+          description:
+            "Complete inspection management system for taxi drivers with scheduling, service orders, administrative control, and reporting.",
+          highlights: [
+            "Management of scheduling, service orders, and operational flow.",
+            "Administrative profiles with visibility into time slots, employees, and history.",
+            "Structure designed for reporting and managerial follow-up.",
+          ],
+        },
+        "batalha-digimon": {
+          name: "Digimon Battle",
+          description:
+            "Automation and data analysis project involving scraping and processing information from the Digimon game.",
+          highlights: [
+            "Automated data collection with Python and Selenium.",
+            "Processed and organized information in a database.",
+            "Practical use of scraping and analysis to turn data into insights.",
+          ],
+        },
+        "plataforma-chamados": {
+          name: "Support Tickets Platform",
+          description:
+            "Ticket management system built with a microservices architecture and AWS integration.",
+          highlights: [
+            "Microservices-based architecture to separate responsibilities.",
+            "AWS integration for scalability and operational support.",
+            "Focus on organizing the support flow and improving ticket traceability.",
+          ],
+        },
         frifasfood: {
           name: "FrifasFood",
           description: "Full-stack system for ordering and product management.",
@@ -202,10 +547,16 @@ export const dictionaries = {
       },
     },
     skills: {
+      slots: "{count} slots",
       groups: {
         tech: "Technical Skills",
         tools: "Frameworks / Tools",
         soft: "Soft Skills",
+      },
+      items: {
+        tech: ["Java", "Spring Boot", "Python", "React", "TypeScript", "Angular", "SQL", "Node.js", "REST APIs"],
+        tools: ["Git", "Docker", "AWS", "Azure", "CI/CD", "Linux", "Postman"],
+        soft: ["Communication", "Teamwork", "Problem solving", "Proactivity", "Organization", "Continuous learning"],
       },
     },
     errors: {
@@ -221,6 +572,11 @@ export const dictionaries = {
         linkedin: "LinkedIn",
         github: "GitHub",
       },
+      channelsTitle: "COMMUNICATION CHANNELS",
+      channelsCount: "{count} links",
+      copied: "COPIED ✓",
+      transmissionTitle: "SEND TRANSMISSION",
+      secureLine: "secure line",
       sendMessage: "Send a message",
       yourName: "Your Name",
       yourEmail: "Your Email",

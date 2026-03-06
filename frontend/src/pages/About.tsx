@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { profile } from "../data/profile";
+import { useI18n } from "../i18n/I18nProvider";
 import styles from "../styles/About.module.css";
 
 type Line = { text: string; speed?: number; pauseAfter?: number };
@@ -9,72 +10,65 @@ function sleep(ms: number) {
 }
 
 export default function About() {
+  const { lang, t, ta } = useI18n();
+
   const script: Line[] = useMemo(() => {
-    const about = profile.about;
+    const fileName = lang === "en" ? "about_me.txt" : profile.about.fileName;
+    const lines = ta("profile.aboutTerminal.lines");
 
     return [
       { text: "C:\\Users\\visitor> whoami", speed: 14, pauseAfter: 180 },
-      { text: about.promptName, speed: 10, pauseAfter: 220 },
+      { text: profile.name, speed: 10, pauseAfter: 220 },
       { text: "", pauseAfter: 120 },
-      { text: `C:\\Users\\visitor> type ${about.fileName}`, speed: 14, pauseAfter: 240 },
-
-      ...about.lines.map((line) => ({
+      { text: `C:\\Users\\visitor> type ${fileName}`, speed: 14, pauseAfter: 240 },
+      ...lines.map((line) => ({
         text: line,
         speed: 11,
         pauseAfter: 120,
       })),
-
       { text: "", pauseAfter: 120 },
       { text: "C:\\Users\\visitor> _", speed: 18, pauseAfter: 0 },
     ];
-  }, []);
+  }, [lang, ta]);
 
   const [typed, setTyped] = useState("");
-  const cancelled = useRef(false);
-  const running = useRef(false);
+  const activeRunId = useRef(0);
 
-  const skip = () => {
-    cancelled.current = true;
-    setTyped(script.map((l) => l.text).join("\n") + "\n");
-    running.current = false;
-  };
+  useEffect(() => {
+    let cancelled = false;
+    const runId = ++activeRunId.current;
 
-  const runTyping = async () => {
-    if (running.current) return;
+    const runTyping = async () => {
+      setTyped("");
+      let out = "";
 
-    running.current = true;
-    cancelled.current = false;
-    setTyped("");
+      for (const line of script) {
+        if (cancelled || activeRunId.current !== runId) return;
 
-    let out = "";
+        if (!line.text) {
+          out += "\n";
+          setTyped(out);
+          await sleep(line.pauseAfter ?? 0);
+          continue;
+        }
 
-    for (const line of script) {
-      if (cancelled.current) break;
+        for (let i = 0; i < line.text.length; i++) {
+          if (cancelled || activeRunId.current !== runId) return;
+          out += line.text[i];
+          setTyped(out);
+          await sleep(line.speed ?? 12);
+        }
 
-      if (!line.text) {
         out += "\n";
         setTyped(out);
         await sleep(line.pauseAfter ?? 0);
-        continue;
       }
+    };
 
-      for (let i = 0; i < line.text.length; i++) {
-        if (cancelled.current) break;
-        out += line.text[i];
-        setTyped(out);
-        await sleep(line.speed ?? 12);
-      }
-
-      out += "\n";
-      setTyped(out);
-      await sleep(line.pauseAfter ?? 0);
-    }
-
-    running.current = false;
-  };
-
-  useEffect(() => {
-    runTyping();
+    const skip = () => {
+      cancelled = true;
+      setTyped(script.map((line) => line.text).join("\n") + "\n");
+    };
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" || e.key === "Escape" || e.key === " ") skip();
@@ -82,27 +76,28 @@ export default function About() {
 
     const onClick = () => skip();
 
+    runTyping();
     document.addEventListener("keydown", onKey);
     document.addEventListener("click", onClick);
 
     return () => {
-      cancelled.current = true;
+      cancelled = true;
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("click", onClick);
     };
-  }, []);
+  }, [script]);
 
   return (
     <div className="stack">
       <div className="section-title">
-        <h1>{profile.about.title}</h1>
+        <h1>{t("profile.aboutTitle")}</h1>
       </div>
 
       <div className={styles.aboutTerminal}>
         <div className={styles.aboutTerminalTop}>
           <span className={styles.aboutDot} />
-          <span className={styles.aboutTerminalTitle}>{profile.about.terminalTitle}</span>
-          <span className={styles.aboutTerminalHint}>{profile.about.hint}</span>
+          <span className={styles.aboutTerminalTitle}>{t("profile.aboutTerminal.title")}</span>
+          <span className={styles.aboutTerminalHint}>{t("profile.aboutTerminal.hint")}</span>
         </div>
 
         <pre className={styles.aboutTerminalBody}>

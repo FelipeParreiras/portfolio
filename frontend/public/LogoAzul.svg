@@ -1,0 +1,35 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Gradiente azul -->
+    <linearGradient id="matrixBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9be7ff"></stop>
+      <stop offset="40%" stop-color="#29b6ff"></stop>
+      <stop offset="100%" stop-color="#0078ff"></stop>
+    </linearGradient>
+
+    <!-- Glow estilo neon -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+  </defs>
+
+  <!-- Letra F -->
+  <path d="M150 80 H380 V140 H220 V230 H340 V290 H220 V430 H150 Z" fill="url(#matrixBlue)" filter="url(#glow)"></path>
+
+  <!-- linhas digitais estilo matrix -->
+  <g stroke="#6fd3ff" stroke-opacity="0.25" stroke-width="2">
+    <line x1="120" y1="120" x2="380" y2="120"></line>
+    <line x1="120" y1="180" x2="320" y2="180"></line>
+    <line x1="120" y1="250" x2="360" y2="250"></line>
+    <line x1="120" y1="320" x2="260" y2="320"></line>
+    <line x1="120" y1="380" x2="240" y2="380"></line>
+  </g>
+
+</svg>

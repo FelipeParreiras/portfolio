@@ -6,9 +6,19 @@ import { useI18n } from "../i18n/I18nProvider";
 import styles from "../styles/Experience.module.css";
 
 export default function Experience() {
-  const { t } = useI18n();
+  const { lang, t, ta } = useI18n();
 
-  const items = useMemo(() => (Array.isArray(experience) ? experience : []), []);
+  const items = useMemo(
+    () =>
+      experience.map((item) => ({
+        ...item,
+        role: t(`experience.items.${item.id}.role`),
+        period: t(`experience.items.${item.id}.period`),
+        badge: t(`experience.items.${item.id}.badge`),
+        bullets: ta(`experience.items.${item.id}.bullets`),
+      })),
+    [lang, t, ta]
+  );
 
   const [selected, setSelected] = useState(0);
 
@@ -23,7 +33,6 @@ export default function Experience() {
   const leftIndex = clampIndex(selected - 1);
   const rightIndex = clampIndex(selected + 1);
 
-  // teclado + mouse wheel
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") prev();
@@ -32,8 +41,7 @@ export default function Experience() {
 
     const onWheel = (e: WheelEvent) => {
       const target = e.target as HTMLElement | null;
-      if (!target) return;
-      if (!target.closest?.("#experiencias")) return;
+      if (!target || !target.closest?.("#experiencias")) return;
 
       if (Math.abs(e.deltaY) > 6) {
         e.preventDefault();
@@ -46,16 +54,19 @@ export default function Experience() {
 
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("wheel", onWheel as any);
+      window.removeEventListener("wheel", onWheel as EventListener);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items.length]);
+
+  useEffect(() => {
+    setSelected((current) => clampIndex(current));
+  }, [items]);
 
   if (items.length === 0) {
     return (
       <div className="page">
         <SectionTitle title={t("home.experienceTitle")} subtitle={t("home.experienceSubtitle")} />
-        <div className="card">Sem experiências cadastradas.</div>
+        <div className="card">{t("experience.empty")}</div>
       </div>
     );
   }
@@ -74,8 +85,8 @@ export default function Experience() {
           <div className={styles.xpSelectHint}>{t("experience.selectHint")}</div>
         </div>
 
-        <div className={styles.xpSelectStage} aria-label="Carrossel de experiências">
-          <button className={`${styles.xpNav} ${styles.xpLeft}`} onClick={prev} aria-label="Anterior">
+        <div className={styles.xpSelectStage} aria-label={t("experience.carouselAriaLabel")}>
+          <button className={`${styles.xpNav} ${styles.xpLeft}`} onClick={prev} aria-label={t("experience.previous")}>
             ‹
           </button>
 
@@ -84,7 +95,7 @@ export default function Experience() {
               <ExperienceCard item={items[leftIndex]} index={leftIndex} />
             </div>
 
-            <div className={`${styles.xpCardSlot} ${styles.center}`} aria-label="Selecionado">
+            <div className={`${styles.xpCardSlot} ${styles.center}`} aria-label={t("experience.selected")}>
               <ExperienceCard item={items[selected]} index={selected} />
             </div>
 
@@ -93,7 +104,7 @@ export default function Experience() {
             </div>
           </div>
 
-          <button className={`${styles.xpNav} ${styles.xpRight}`} onClick={next} aria-label="Próximo">
+          <button className={`${styles.xpNav} ${styles.xpRight}`} onClick={next} aria-label={t("experience.next")}>
             ›
           </button>
         </div>

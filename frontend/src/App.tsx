@@ -8,7 +8,7 @@ export default function App() {
   const [introFinished, setIntroFinished] = useState(false);
 
   return (
-    <div className={`${showIntro ? "siteBehind" : ""} ${introFinished ? "introDone" : ""}`}>
+    <>
       {showIntro && (
         <RareProfessionalIntro
           onFinish={() => {
@@ -18,8 +18,12 @@ export default function App() {
         />
       )}
 
-      <AppRoutes introFinished={introFinished} />
-      <FlappyWidget />
-    </div>
+      <div className={`${showIntro ? "siteBehind" : ""} ${introFinished ? "introDone" : ""}`}>
+        <div className="siteContent">
+          <AppRoutes introFinished={introFinished} />
+          <FlappyWidget />
+        </div>
+      </div>
+    </>
   );
 }
