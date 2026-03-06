@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import SectionTitle from "../components/UI/SectionTitle";
 import { profile } from "../data/profile";
 import { useI18n } from "../i18n/I18nProvider";
+import styles from "../styles/Contact.module.css";
 
 type FormState = {
   name: string;
@@ -27,7 +28,6 @@ export default function Contact() {
     message: "",
   });
 
-  // Mailto do formulário (personalizado)
   const mailtoForm = useMemo(() => {
     const subject = t("contact.subject");
     const body =
@@ -40,9 +40,8 @@ export default function Contact() {
       subject,
       body,
     });
-  }, [form]);
+  }, [form, t]);
 
-  // Mailto padrão para os contatos (com o link no corpo)
   const mailtoEmail = useMemo(() => {
     return buildMailto({
       to: profile.links.email,
@@ -69,97 +68,111 @@ export default function Contact() {
 
   return (
     <div className="page">
-      <SectionTitle
-        title={t("contact.title")}
-        subtitle={t("contact.subtitle")}
-      />
+      <SectionTitle title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
-      <div className="grid-contact">
-        <div className="card">
-          <div className="contact-item">
-            <div className="contact-icon" aria-hidden="true">
-              ✉
+      <div className={styles.contactGrid}>
+        <div className={styles.channelPanel}>
+          <div className={styles.panelTop}>
+            <div className={styles.panelTitle}>
+              <span className={styles.panelLed} aria-hidden="true" />
+              COMMUNICATION CHANNELS
             </div>
-            <div>
-              <div className="contact-label">{t("contact.labels.email")}</div>
-              <a href={mailtoEmail}>{profile.links.email}</a>
-            </div>
+            <div className={styles.panelMeta}>3 links</div>
           </div>
 
-          <div className="contact-item">
-            <div className="contact-icon" aria-hidden="true">
-              in
-            </div>
-            <div>
-              <div className="contact-label">{t("contact.labels.linkedin")}</div>
-              <a href={mailtoLinkedin}>
-                {profile.links.linkedin}
-              </a>
-            </div>
-          </div>
+          <div className={styles.panelBody}>
+            <a className={styles.channelItem} href={mailtoEmail}>
+              <div className={styles.channelIcon} aria-hidden="true">
+                ✉
+              </div>
+              <div className={styles.channelContent}>
+                <div className={styles.channelLabel}>{t("contact.labels.email")}</div>
+                <div className={styles.channelValue}>{profile.links.email}</div>
+              </div>
+            </a>
 
-          <div className="contact-item">
-            <div className="contact-icon" aria-hidden="true">
-              GH
-            </div>
-            <div>
-              <div className="contact-label">{t("contact.labels.github")}</div>
-              <a href={mailtoGithub}>
-                {profile.links.github}
-              </a>
-            </div>
+            <a className={styles.channelItem} href={mailtoLinkedin}>
+              <div className={styles.channelIcon} aria-hidden="true">
+                in
+              </div>
+              <div className={styles.channelContent}>
+                <div className={styles.channelLabel}>{t("contact.labels.linkedin")}</div>
+                <div className={styles.channelValue}>{profile.links.linkedin}</div>
+              </div>
+            </a>
+
+            <a className={styles.channelItem} href={mailtoGithub}>
+              <div className={styles.channelIcon} aria-hidden="true">
+                GH
+              </div>
+              <div className={styles.channelContent}>
+                <div className={styles.channelLabel}>{t("contact.labels.github")}</div>
+                <div className={styles.channelValue}>{profile.links.github}</div>
+              </div>
+            </a>
           </div>
         </div>
 
-        <div className="card">
-          <h2 className="h2">{t("contact.sendMessage")}</h2>
-
-          <form className="form" onSubmit={(e) => e.preventDefault()}>
-            <label className="field">
-              <span>{t("contact.yourName")}</span>
-              <input
-                value={form.name}
-                onChange={(e) =>
-                  setForm((s) => ({ ...s, name: e.target.value }))
-                }
-                placeholder={t("contact.placeholderName")}
-              />
-            </label>
-
-            <label className="field">
-              <span>{t("contact.yourEmail")}</span>
-              <input
-                type="email"
-                value={form.email}
-                onChange={(e) =>
-                  setForm((s) => ({ ...s, email: e.target.value }))
-                }
-                placeholder={t("contact.placeholderEmail")}
-              />
-            </label>
-
-            <label className="field">
-              <span>{t("contact.yourMessage")}</span>
-              <textarea
-                value={form.message}
-                onChange={(e) =>
-                  setForm((s) => ({ ...s, message: e.target.value }))
-                }
-                placeholder={t("contact.placeholderMessage")}
-                rows={6}
-              />
-            </label>
-
-            <div className="actions" style={{ justifyContent: "flex-end" }}>
-              <a className="btn btn-primary" href={mailtoForm}>
-                {t("contact.send")}
-              </a>
+        <div className={styles.formPanel}>
+          <div className={styles.panelTop}>
+            <div className={styles.panelTitle}>
+              <span className={styles.panelLed} aria-hidden="true" />
+              SEND TRANSMISSION
             </div>
+            <div className={styles.panelMeta}>secure line</div>
+          </div>
 
-            <p className="muted" style={{ marginTop: 8, fontSize: 12 }}>
-              {t("contact.note")}
-            </p>
-          </form>
+          <div className={styles.panelBody}>
+            <h2 className={styles.formTitle}>{t("contact.sendMessage")}</h2>
+
+            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+              <label className={styles.field}>
+                <span className={styles.fieldLabel}>{t("contact.yourName")}</span>
+                <input
+                  className={styles.fieldInput}
+                  value={form.name}
+                  onChange={(e) =>
+                    setForm((s) => ({ ...s, name: e.target.value }))
+                  }
+                  placeholder={t("contact.placeholderName")}
+                />
+              </label>
+
+              <label className={styles.field}>
+                <span className={styles.fieldLabel}>{t("contact.yourEmail")}</span>
+                <input
+                  className={styles.fieldInput}
+                  type="email"
+                  value={form.email}
+                  onChange={(e) =>
+                    setForm((s) => ({ ...s, email: e.target.value }))
+                  }
+                  placeholder={t("contact.placeholderEmail")}
+                />
+              </label>
+
+              <label className={styles.field}>
+                <span className={styles.fieldLabel}>{t("contact.yourMessage")}</span>
+                <textarea
+                  className={styles.fieldTextarea}
+                  value={form.message}
+                  onChange={(e) =>
+                    setForm((s) => ({ ...s, message: e.target.value }))
+                  }
+                  placeholder={t("contact.placeholderMessage")}
+                  rows={6}
+                />
+              </label>
+
+              <div className={styles.formActions}>
+                <a className={styles.sendButton} href={mailtoForm}>
+                  {t("contact.send")}
+                </a>
+              </div>
+
+              <p className={styles.note}>{t("contact.note")}</p>
+            </form>
+          </div>
         </div>
       </div>
     </div>

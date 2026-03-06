@@ -20,8 +20,8 @@ export default function Navbar() {
   );
 
   const [activeId, setActiveId] = useState<string>("inicio");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // progresso simples por seção ativa (0..100)
   const progress = useMemo(() => {
     const idx = Math.max(0, items.findIndex((i) => i.id === activeId));
     const denom = Math.max(1, items.length - 1);
@@ -55,9 +55,30 @@ export default function Navbar() {
     return () => obs.disconnect();
   }, [items]);
 
+  useEffect(() => {
+    const closeOnResize = () => {
+      if (window.innerWidth > 960) setMenuOpen(false);
+    };
+
+    const closeOnEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+
+    window.addEventListener("resize", closeOnResize);
+    window.addEventListener("keydown", closeOnEsc);
+
+    return () => {
+      window.removeEventListener("resize", closeOnResize);
+      window.removeEventListener("keydown", closeOnEsc);
+    };
+  }, []);
+
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <header className={styles.navMatrix}>
-      {/* barra de progresso HUD */}
       <div className={styles.navProgress} aria-hidden="true">
         <div className={styles.navProgressTrack}>
           <div className={styles.navProgressFill} style={{ width: `${progress}%` }} />
@@ -107,7 +128,59 @@ export default function Navbar() {
             {t("nav.contact")}
           </a>
         </div>
+
+        <button
+          type="button"
+          className={styles.mobileMenuButton}
+          aria-label="Abrir menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span className={styles.mobileMenuLine} />
+          <span className={styles.mobileMenuLine} />
+          <span className={styles.mobileMenuLine} />
+        </button>
       </nav>
+
+      <div className={`${styles.mobileDropdown} ${menuOpen ? styles.mobileDropdownOpen : ""}`}>
+        <div className={styles.mobileDropdownInner}>
+          {items.map((i) => {
+            const isActive = activeId === i.id;
+            return (
+              <a
+                key={i.id}
+                href={`#${i.id}`}
+                onClick={handleNavClick}
+                className={`${styles.mobileNavLink} ${isActive ? styles.active : ""}`}
+              >
+                <span className={styles.navMatrixLinkPrefix} aria-hidden="true">
+                  {isActive ? "> " : "$ "}
+                </span>
+                {i.label}
+              </a>
+            );
+          })}
+
+          <button
+            type="button"
+            className={`${styles.mobileNavLink} ${styles.mobileActionButton}`}
+            onClick={() => {
+              toggleLang();
+              setMenuOpen(false);
+            }}
+          >
+            {t("nav.langToggle")} • {lang.toUpperCase()}
+          </button>
+
+          <a
+            className={`${styles.mobileNavLink} ${styles.mobileContactLink}`}
+            href="#contato"
+            onClick={handleNavClick}
+          >
+            {t("nav.contact")}
+          </a>
+        </div>
+      </div>
     </header>
   );
 }

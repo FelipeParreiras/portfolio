@@ -1,29 +1,28 @@
 /* ===== NAVBAR MATRIX HUD ===== */
-.navMatrix{
+.navMatrix {
   position: sticky;
   top: 0;
   z-index: 1200;
   background: #000;
-  border-bottom: 1px solid rgba(0,255,140,.18);
-  box-shadow: 0 12px 35px rgba(0,0,0,.35);
+  border-bottom: 1px solid rgba(0, 255, 140, 0.18);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
 }
 
-/* scanlines bem leves só na navbar */
-.navMatrix::after{
-  content:"";
-  position:absolute;
-  inset:0;
+.navMatrix::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,0) 2px,
-    rgba(0,0,0,.12) 3px
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.12) 3px
   );
-  opacity:.35;
-  pointer-events:none;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
-.navMatrixInner{
+.navMatrixInner {
   max-width: 1040px;
   margin: 0 auto;
   padding: 12px 18px 14px;
@@ -35,178 +34,274 @@
 }
 
 /* ===== Progress HUD ===== */
-.navProgress{
-  display:flex;
-  align-items:center;
+.navProgress {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-
   padding: 8px 18px 0;
   max-width: 1040px;
   margin: 0 auto;
 }
 
-.navProgressTrack{
+.navProgressTrack {
   flex: 1;
   height: 6px;
   border-radius: 999px;
-  background: rgba(0,255,140,.08);
-  border: 1px solid rgba(0,255,140,.18);
-  overflow:hidden;
-  box-shadow: inset 0 0 14px rgba(0,255,140,.06);
+  background: rgba(0, 255, 140, 0.08);
+  border: 1px solid rgba(0, 255, 140, 0.18);
+  overflow: hidden;
+  box-shadow: inset 0 0 14px rgba(0, 255, 140, 0.06);
 }
 
-.navProgressFill{
+.navProgressFill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, rgba(0,255,120,.95), rgba(0,255,200,.65));
-  box-shadow: 0 0 18px rgba(0,255,120,.25);
+  background: linear-gradient(90deg, rgba(0, 255, 120, 0.95), rgba(0, 255, 200, 0.65));
+  box-shadow: 0 0 18px rgba(0, 255, 120, 0.25);
   transition: width 220ms ease;
 }
 
-.navProgressLabel{
+.navProgressLabel {
   width: 92px;
   text-align: right;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 12px;
-  letter-spacing: .06em;
-  color: rgba(0,255,140,.78);
-  text-shadow: 0 0 10px rgba(0,255,140,.20);
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
+  letter-spacing: 0.06em;
+  color: rgba(0, 255, 140, 0.78);
+  text-shadow: 0 0 10px rgba(0, 255, 140, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 8px;
 }
 
-.navProgressDot{
+.navProgressDot {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(0,255,140,.9);
-  box-shadow: 0 0 0 4px rgba(0,255,140,.12);
+  background: rgba(0, 255, 140, 0.9);
+  box-shadow: 0 0 0 4px rgba(0, 255, 140, 0.12);
 }
 
 /* ===== Brand ===== */
-.navMatrixBrand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
+.navMatrixBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  min-width: 0;
 }
 
-.navMatrixDot{
+.navMatrixDot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: rgba(0,255,140,.92);
-  box-shadow: 0 0 0 4px rgba(0,255,140,.14), 0 0 22px rgba(0,255,140,.14);
+  background: rgba(0, 255, 140, 0.92);
+  box-shadow: 0 0 0 4px rgba(0, 255, 140, 0.14), 0 0 22px rgba(0, 255, 140, 0.14);
 }
 
-.navMatrixName{
-  color: rgba(0,255,140,.92);
-  text-shadow: 0 0 14px rgba(0,255,140,.20);
-  letter-spacing: .01em;
+.navMatrixName {
+  color: rgba(0, 255, 140, 0.92);
+  text-shadow: 0 0 14px rgba(0, 255, 140, 0.2);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
-.navMatrixBadge{
+.navMatrixBadge {
   margin-left: 6px;
   font-size: 11px;
-  letter-spacing: .18em;
-  color: rgba(0,255,140,.62);
-  border: 1px solid rgba(0,255,140,.22);
+  letter-spacing: 0.18em;
+  color: rgba(0, 255, 140, 0.62);
+  border: 1px solid rgba(0, 255, 140, 0.22);
   padding: 3px 8px;
   border-radius: 999px;
-  background: rgba(0,255,140,.06);
+  background: rgba(0, 255, 140, 0.06);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* ===== Links ===== */
-.navMatrixLinks{
-  display:flex;
+.navMatrixLinks {
+  display: flex;
   gap: 6px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.navMatrixLink{
-  display:inline-flex;
-  align-items:center;
+.navMatrixLink {
+  display: inline-flex;
+  align-items: center;
   gap: 2px;
   padding: 8px 10px;
   border-radius: 10px;
   font-weight: 500;
   font-size: 13px;
-
-  color: rgba(0,255,140,.78);
-  text-decoration:none;
-
+  color: rgba(0, 255, 140, 0.78);
+  text-decoration: none;
   border: 1px solid transparent;
   background: transparent;
   transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
-.navMatrixLink:hover{
-  text-decoration:none;
-  background: rgba(0,255,140,.06);
-  border-color: rgba(0,255,140,.18);
+.navMatrixLink:hover {
+  text-decoration: none;
+  background: rgba(0, 255, 140, 0.06);
+  border-color: rgba(0, 255, 140, 0.18);
   transform: translateY(-1px);
 }
 
-.navMatrixLink.active{
-  background: rgba(0,255,140,.10);
-  border-color: rgba(0,255,140,.28);
-  color: rgba(0,255,160,.95);
-  box-shadow: 0 0 22px rgba(0,255,140,.10);
+.active {
+  background: rgba(0, 255, 140, 0.1);
+  border-color: rgba(0, 255, 140, 0.28);
+  color: rgba(0, 255, 160, 0.95);
+  box-shadow: 0 0 22px rgba(0, 255, 140, 0.1);
 }
 
-.navMatrixLinkPrefix{
+.navMatrixLinkPrefix {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  opacity: .95;
+  opacity: 0.95;
 }
 
 /* Right side */
-.navMatrixRight{
-  display:flex;
-  justify-content:flex-end;
+.navMatrixRight {
+  display: flex;
+  justify-content: flex-end;
   gap: 10px;
-  align-items:center;
+  align-items: center;
 }
 
-.navMatrixBtn{
-  cursor:pointer;
-  border: 1px solid rgba(0,255,140,.18);
-  background: rgba(0,255,140,.06);
+.navMatrixBtn {
+  cursor: pointer;
+  border: 1px solid rgba(0, 255, 140, 0.18);
+  background: rgba(0, 255, 140, 0.06);
 }
 
-.navMatrixCta{
+.navMatrixCta {
   padding: 9px 12px;
   border-radius: 12px;
-  background: rgba(0,255,140,.12);
-  border: 1px solid rgba(0,255,140,.28);
-  color: rgba(0,255,160,.95);
-  text-decoration:none;
+  background: rgba(0, 255, 140, 0.12);
+  border: 1px solid rgba(0, 255, 140, 0.28);
+  color: rgba(0, 255, 160, 0.95);
+  text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 0 26px rgba(0,255,140,.10);
+  box-shadow: 0 0 26px rgba(0, 255, 140, 0.1);
 }
 
-.navMatrixCta:hover{
-  text-decoration:none;
-  background: rgba(0,255,140,.16);
+.navMatrixCta:hover {
+  text-decoration: none;
+  background: rgba(0, 255, 140, 0.16);
+}
+
+/* ===== Mobile menu button ===== */
+.mobileMenuButton {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 140, 0.22);
+  background: rgba(0, 255, 140, 0.06);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  justify-self: end;
+}
+
+.mobileMenuLine {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(0, 255, 140, 0.92);
+  box-shadow: 0 0 8px rgba(0, 255, 140, 0.18);
+}
+
+/* ===== Mobile dropdown ===== */
+.mobileDropdown {
+  display: none;
+}
+
+.mobileDropdownInner {
+  display: grid;
+  gap: 10px;
+  padding: 12px 18px 16px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(0, 255, 140, 0.88);
+  border: 1px solid rgba(0, 255, 140, 0.14);
+  background: rgba(0, 255, 140, 0.04);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.mobileActionButton {
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobileContactLink {
+  background: rgba(0, 255, 140, 0.12);
+  border-color: rgba(0, 255, 140, 0.24);
 }
 
 /* Responsivo */
-@media (max-width: 960px){
-  .navMatrixInner{
-    grid-template-columns: 1fr;
-    justify-items: start;
+@media (max-width: 960px) {
+  .navMatrixInner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
   }
-  .navMatrixLinks{
-    justify-content: flex-start;
+
+  .navProgress {
+    padding: 8px 14px 0;
   }
-  .navMatrixRight{
-    justify-content: flex-start;
+
+  .navProgressLabel {
+    width: auto;
+    min-width: 68px;
+    font-size: 11px;
   }
-  .navProgress{
-    padding: 8px 18px 0;
+
+  .navMatrixLinks,
+  .navMatrixRight,
+  .navMatrixBadge {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+  }
+
+  .navMatrixBrand {
+    min-width: 0;
+  }
+
+  .navMatrixName {
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobileDropdown {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 220ms ease, opacity 220ms ease;
+    border-top: 1px solid transparent;
+  }
+
+  .mobileDropdownOpen {
+    max-height: 420px;
+    opacity: 1;
+    border-top: 1px solid rgba(0, 255, 140, 0.12);
+    background: rgba(0, 0, 0, 0.96);
   }
 }

@@ -8,6 +8,7 @@ import Contact from "./Contact";
 
 import { profile } from "../data/profile";
 import { useI18n } from "../i18n/I18nProvider";
+import styles from "../styles/Home.module.css";
 
 type HomeProps = {
   introFinished: boolean;
@@ -30,24 +31,26 @@ export default function Home({ introFinished }: HomeProps) {
   return (
     <div className="app-shell">
       <main className="page">
-        <section id="inicio" className="section">
+        <section id="inicio" className={`section ${styles.heroSection}`}>
           <div className="container">
-            <div className="card heroCard">
-              <div className="hero">
-                <div className="heroLeft">
-                  <div className="heroEyebrow">{t("home.hero.eyebrow")}</div>
+            <div className={`card ${styles.heroCard}`}>
+              <div className={styles.hero}>
+                <div className={styles.heroLeft}>
+                  <div className={styles.heroEyebrow}>
+                    {t("home.hero.eyebrow")}
+                  </div>
 
-                  <div className="hero-title">
+                  <div className={styles.heroTitle}>
                     <h1>{profile.name}</h1>
                   </div>
 
-                  <p className="hero-role">{profile.role}</p>
+                  <p className={styles.heroRole}>{profile.role}</p>
 
-                  <p className="heroDescription">
+                  <p className={styles.heroDescription}>
                     {t("home.hero.description")}
                   </p>
 
-                  <div className="actions">
+                  <div className={styles.heroActions}>
                     <a className="btn btn-primary" href="#projetos">
                       {t("home.hero.ctaProjects")}
                     </a>
@@ -56,20 +59,27 @@ export default function Home({ introFinished }: HomeProps) {
                       {t("home.hero.ctaContact")}
                     </a>
                   </div>
+
+                  <div className={styles.heroMeta}>
+                    <span className={styles.heroMetaItem}>React</span>
+                    <span className={styles.heroMetaItem}>Java</span>
+                    <span className={styles.heroMetaItem}>Spring Boot</span>
+                    <span className={styles.heroMetaItem}>AWS</span>
+                  </div>
                 </div>
 
-                <div className="heroRight">
-                  <div className="heroImageFrame">
+                <div className={styles.heroRight}>
+                  <div className={styles.heroImageFrame}>
                     <img
                       src="/images/felipe-hero.jpeg"
                       alt={profile.name}
-                      className="heroImage"
+                      className={styles.heroImage}
                     />
 
                     {introFinished && !imageReady && (
-                      <div className="heroScanner">
-                        <div className="heroScannerBar" />
-                        <div className="heroScannerLabel">
+                      <div className={styles.heroScanner}>
+                        <div className={styles.heroScannerBar} />
+                        <div className={styles.heroScannerLabel}>
                           {t("home.hero.scanner")}
                         </div>
                       </div>
@@ -80,20 +90,20 @@ export default function Home({ introFinished }: HomeProps) {
 
               <hr className="divider" />
 
-              <div className="grid-3">
-                <div className="mini-card mini-card-matrix">
+              <div className={styles.heroBottom}>
+                <div className={styles.heroMiniCard}>
                   <h3>{t("home.cards.focusTitle")}</h3>
-                  <p className="muted">{t("home.cards.focusText")}</p>
+                  <p>{t("home.cards.focusText")}</p>
                 </div>
 
-                <div className="mini-card mini-card-matrix">
+                <div className={styles.heroMiniCard}>
                   <h3>{t("home.cards.stackTitle")}</h3>
-                  <p className="muted">{t("home.cards.stackText")}</p>
+                  <p>{t("home.cards.stackText")}</p>
                 </div>
 
-                <div className="mini-card mini-card-matrix">
+                <div className={styles.heroMiniCard}>
                   <h3>{t("home.cards.goalTitle")}</h3>
-                  <p className="muted">{t("home.cards.goalText")}</p>
+                  <p>{t("home.cards.goalText")}</p>
                 </div>
               </div>
             </div>
