@@ -8,6 +8,7 @@ export const profile = {
     email: "felipe.parreiras04@gmail.com",
     github: "https://github.com/FelipeParreiras",
     linkedin: "https://linkedin.com/in/felipeparreiras",
+    whatsapp: "5531996246080",
   },
 
   hero: {

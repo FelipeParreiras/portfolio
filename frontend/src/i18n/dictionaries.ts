@@ -162,6 +162,18 @@ export const dictionaries = {
             "Participação em metodologias ágeis (Scrum).",
           ],
         },
+        bhs: {
+          role: "Desenvolvedor de Software Júnior",
+          period: "Mar 2026 — Atual",
+          badge: "Front-end",
+          bullets: [
+            "Desenvolvimento e manutenção de aplicações web em React, TypeScript e Node.js.",
+            "Implementação de novas funcionalidades e melhorias de performance nas aplicações.",
+            "Atuação em equipe multidisciplinar no planejamento, desenvolvimento e entrega de demandas.",
+            "Análise técnica e resolução de problemas em sistemas existentes.",
+          ],
+        }
+
       },
     },
     education: {
@@ -422,8 +434,8 @@ export const dictionaries = {
       noAdditionalDetails: "No additional details.",
       items: {
         datte: {
-          role: "Junior Software Developer",
-          period: "Feb 2026 — Present",
+          role: "Junior Full Stack Software Developer",
+          period: "Feb 2026 — March 2026",
           badge: "Full Stack",
           bullets: [
             "Developed and maintained web applications in PHP using CodeIgniter and Laravel.",
@@ -436,7 +448,7 @@ export const dictionaries = {
         confianza: {
           role: "Junior Full Stack Developer",
           period: "Jul 2025 — Jan 2026",
-          badge: "Backend / Automation",
+          badge: "Full Stack / Automation",
           bullets: [
             "Built full stack applications across front-end and back-end layers.",
             "Created bots and automation workflows using Python.",
@@ -460,6 +472,18 @@ export const dictionaries = {
             "Participated in agile methodologies such as Scrum.",
           ],
         },
+        bhs: {
+          role: "Junior Software Developer",
+          period: "Mar 2026 — Present",
+          badge: "Front-end",
+          bullets: [
+            "Developed and maintained web applications in React, TypeScript, and Node.js.",
+            "Implemented new features and performance improvements across applications.",
+            "Worked with a multidisciplinary team in planning, development, and delivery.",
+            "Performed technical analysis and solved issues in existing systems.",
+          ],
+        }
+
       },
     },
     education: {

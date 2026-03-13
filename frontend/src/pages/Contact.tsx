@@ -20,6 +20,11 @@ function buildMailto(params: {
   return `mailto:${params.to}?subject=${subject}&body=${body}`;
 }
 
+function buildWhatsAppLink(phone: string, text: string) {
+  const cleanPhone = phone.replace(/\D/g, "");
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
+}
+
 export default function Contact() {
   const { t } = useI18n();
 
@@ -58,6 +63,13 @@ export default function Contact() {
     });
   }, [form, t]);
 
+  const whatsappLink = useMemo(() => {
+    return buildWhatsAppLink(
+      profile.links.whatsapp,
+      "Olá, Felipe! Vi seu portfólio e gostaria de marcar um bate-papo."
+    );
+  }, []);
+
   return (
     <div className="page">
       <SectionTitle title={t("contact.title")} subtitle={t("contact.subtitle")} />
@@ -70,7 +82,7 @@ export default function Contact() {
               <span className={styles.panelLed} aria-hidden="true" />
               {t("contact.channelsTitle")}
             </div>
-            <div className={styles.panelMeta}>{t("contact.channelsCount", { count: 3 })}</div>
+            <div className={styles.panelMeta}>{t("contact.channelsCount", { count: 4 })}</div>
           </div>
 
           <div className={styles.panelBody}>
@@ -133,6 +145,26 @@ export default function Contact() {
                 </div>
               </div>
             </button>
+
+            {/* WHATSAPP */}
+            <a
+              className={styles.channelItem}
+              href={whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className={styles.channelIcon}>WA</div>
+
+              <div className={styles.channelContent}>
+                <div className={styles.channelLabel}>
+                  WhatsApp
+                </div>
+
+                <div className={styles.channelValue}>
+                  Conversar pelo WhatsApp
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
